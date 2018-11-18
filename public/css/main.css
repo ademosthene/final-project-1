@@ -1,0 +1,199 @@
+/******************************************
+/* SETUP
+/*******************************************/
+
+/* Box Model Hack */
+* {
+     -moz-box-sizing: border-box; /* Firexfox */
+     -webkit-box-sizing: border-box; /* Safari/Chrome/iOS/Android */
+     box-sizing: border-box; /* IE */
+}
+
+/* Clear fix hack */
+.clearfix:after {
+     content: ".";
+     display: block;
+     clear: both;
+     visibility: hidden;
+     line-height: 0;
+     height: 0;
+}
+
+.clear {
+	clear: both;
+}
+
+.alignright {
+	float: right;
+	padding: 0 0 10px 10px; /* note the padding around a right floated image */
+}
+
+.alignleft {
+	float: left;
+	padding: 0 10px 10px 0; /* note the padding around a left floated image */
+}
+
+/******************************************
+/* BASE STYLES
+/*******************************************/
+
+body {
+  background: silver;
+  font-family: 'Rajdhani', sans-serif;
+}
+.prodpage{
+  background: aliceblue;
+}
+.main{
+  background: white;
+}
+header{
+  height: 25vh;
+  background: white;
+  text-align: right;
+}
+.name{
+  font-size: 30px;
+}
+h1, span{
+  text-align: center;
+  margin-top: 0;
+}
+span{
+  font-size: 20px;
+}
+.prof{
+  height: 300px;
+  margin-left: 37%;
+  margin-bottom: 15px;
+  border-radius: 50%;
+}
+.prod{
+  height: 400px;
+  margin-left: 7%;;
+  margin-bottom: 0;
+}
+.container{
+  height: 200vh;
+  background: black;
+  display: grid;
+  grid-template-rows: 1.5fr 1fr 1fr;
+  grid-row-gap: 1px;
+  grid-template-areas:
+    "hero"
+    "featured"
+    "release"
+}
+.hero{
+  grid-area: hero;
+  background-color: white;
+  background-image: url("../img/fist.jpg");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+  text-align: center;
+}
+.featured{
+  grid-area: featured;
+  background: aliceblue;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 10px;
+  justify-content: space-around;
+  grid-template-areas:
+    "feat1 feat2 feat3"
+}
+h2{
+  text-align: center;
+}
+.release{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 10px;
+  justify-content: space-around;
+  grid-template-areas:
+    "real1 real2 real3"
+}
+.feat, .real{
+  margin-left: 15%;
+  margin-top: 20px;
+  height: 300px;
+  width: 300px;
+  border: 2px solid green;
+}
+.gal{
+  display: inline-block;
+  height: 300px;
+  width: 300px;
+  border: 2px solid green;
+  margin-left: 5%;
+}
+.release{
+  grid-area: release;
+  background: white;
+}
+.about{
+  border: 2px solid aliceblue;
+  background: aliceblue;
+  padding-top: 10px;
+}
+.wrapper{
+  height: 480px;
+  background: aliceblue;
+  width: 100%;
+}
+.product{
+  background: white;
+  height: 450px;
+  width: 43%;
+  display: inline-block;
+  margin-left: 5%;
+  float: left;
+  margin-right: 2%;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+}
+.prod1{
+  height: 130px;
+  width: 130px;
+  margin: 2%;
+  float: left;
+  border: 1px solid black;
+  background: white;
+}
+.details{
+  background: aliceblue;
+  height: 450px;
+  width: 45%;
+  display: inline-block;
+  float: left;
+}
+#prod{
+  margin: 240px 2% 0 2%;
+  background: white;
+}
+footer{
+  height: 10vh;
+  background: white;
+}
+
+/******************************************
+/* LAYOUT
+/*******************************************/
+
+
+
+
+/* MOBILE */
+@media only screen and (max-width: 768px){
+
+}
+@media (min-width: 769px) and (max-width: 1024px){
+
+}
+
+/******************************************
+/* ADDITIONAL STYLES
+/*******************************************/
