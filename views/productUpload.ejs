@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <%include ./partials/head%>
+  </head>
+  <body>
+    <%include ./partials/header%>
+
+    <section class="upload-wrapper">
+
+      <h2></h2>
+        <!-- IMAGE UPLOAD -->
+      <form action="/up2" enctype="multipart/form-data" method="post">
+          <label for="">Name: </label>
+          <input type="text" name="name" value="">
+          <label for="">Description: </label>
+          <input type="text" name="description" value="">
+          <label for="">Price: </label>
+          <input type="number" name="price" value="">
+          <input type="file" name="file-to-upload">
+          <input type="submit" value="Upload">
+      </form>
+    </section>
+
+
+
+    <%include ./partials/footer%>
+
+  </body>
+</html>

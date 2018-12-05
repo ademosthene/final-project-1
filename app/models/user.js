@@ -26,8 +26,15 @@ var userSchema = mongoose.Schema({
         token        : String,
         email        : String,
         name         : String
-    }
+    },
 
+    name : String,
+    username : String,
+    img : String,
+    bio : String,
+    location : String,
+    gallery : [{ type: mongoose.Schema.Types.ObjectId, ref: 'Product' }],
+    followedArtists : [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }]
 });
 
 // generating a hash

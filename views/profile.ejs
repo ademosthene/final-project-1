@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <%include ./partials/head%>
+  </head>
+  <body>
+    <%include ./partials/header%>
+
+    <section class ="profile-information">
+      <section class="profile-picture">
+        <section class="pro-image">
+          <img id="profileImg" src="<%= user.img %>" alt="">
+        </section>
+        <section class="upload-picture">
+          <form action="/up" enctype="multipart/form-data" method="post">
+            <input class="choose-file" type="file" name="file-to-upload">
+            <input class="upload" type="submit" value="Upload">
+          </form>
+        </section>
+        <section class="bio-info">
+          <form action="/profile" method="POST">
+            <section class="first-bio">
+              <label class="bio-info-label1" for="">Name: </label>
+              <input class="bio-info-input1"type="text" name="name" value="<%= user.name %>">
+            </section>
+            <br>
+            <label for="">UserName: </label>
+            <input class="user-label" type="text" name="username" value="<%= user.username %>">
+            <br>
+            <label  for="">Location: </label>
+            <input type="text" name="location" value="<%= user.location %>">
+            <br>
+            <section class="bio-section">
+                <label class= "bio-info-label2" for="">Bio: </label>
+                <input class= "bio-info-input2" "type="text" name="bio" value="<%= user.bio %>">
+                <input type="submit" name="" value="SUBMIT">
+              </form>
+            </section>
+        </section>
+      </section>
+      <section class="profile-username">
+        <section class="shop-and-upload">
+          <h1>shop lol</h1>
+        </section>
+      </section>
+      </section>
+
+    <!-- <section class="info">
+      <form action="/profile" method="POST">
+        <label for="">Name: </label>
+        <input type="text" name="name" value="<%= user.name %>">
+        <label for="">UserName: </label>
+        <input type="text" name="username" value="<%= user.username %>">
+        <label for="">Location: </label>
+        <input type="text" name="location" value="<%= user.location %>">
+        <label for="">Bio: </label>
+        <input type="text" name="bio" value="<%= user.bio %>">
+        <input type="submit" name="" value="SUBMIT">
+      </form>
+    </section> -->
+    <!-- <section>
+      <img id="profileImg" src="<%= user.img %>" alt="">
+    </section> -->
+
+    <!-- IMAGE UPLOAD -->
+
+    <!-- <section class="gallery">
+      <section id="gal">
+        <img src="#" alt="">
+      </section>
+      <section>
+
+      </section>
+      <section>
+
+      </section>
+    </section> -->
+    <footer>  <%include ./partials/footer%></footer>
+  <script type="text/javascript" src="js/main.js"></script>
+  </body>
+</html>

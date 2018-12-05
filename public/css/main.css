@@ -48,9 +48,10 @@ body {
   background: white;
 }
 header{
-  height: 25vh;
+  height: 20vh;
   background: white;
   text-align: right;
+  width: 100%;
 }
 .name{
   font-size: 30px;
@@ -178,11 +179,110 @@ footer{
   height: 10vh;
   background: white;
 }
+#profileImg{
+  height: 200px;
+  width: 70%;
+  border-radius: 50%;
+  margin-left: 18%;
+}
+.gallery section{
+  display: none;
+  height: 100px;
+  width: 100px;
+  border: 1px solid black;
+}
+section.show {
+  display: block;
+  height: 100px;
+  width: 100px;
+  border: 1px solid black;
+}
 
 /******************************************
 /* LAYOUT
 /*******************************************/
 
+/******************************************
+/* profile
+/*******************************************/
+.profile-information{
+  width:100%;
+  height: 72vh;
+  background: aliceblue;
+}
+.profile-picture{
+  padding-top: 1%;
+  width: 39%;
+  float:left;
+  height: 72vh;
+  background: aliceblue;
+}
+.pro-image{
+  float:left;
+  width: 70%;
+}
+.upload-picture{
+  float:left;
+  width: 30%;
+}
+.bio-info{
+  width: 100%;
+  float: left;
+  margin-left:18%;
+}
+.bio-info .bio-info-label2, .bio-info-input2{
+  display: block;
+}
+.first-bio{
+  padding-top:5%;
+  border-bottom: 1px solid black;
+  padding-bottom: 3%;
+  margin-right: 60%;
+}
+.bio-info .bio-info-label2{
+  margin-top:1%;
+}
+.bio-info .bio-info-input2{
+padding: 6%;
+margin-bottom: 2%;
+}
+.choose-file{
+  display:block;
+  margin-bottom: 5%;
+  margin-top:121%;
+}
+.upload{
+  display: block;
+}
+
+.profile-username{
+  width:46%;
+  /* border:1px solid black; */
+  float:left;
+  height: 70vh;
+  margin-left:15%;
+  background: aliceblue;
+}
+.user-label{
+  margin-bottom: 1.5%;
+}
+.bio-section{
+  margin-top: 3%;
+  border-top: 1px solid black;
+  margin-right: 59%;
+}
+/******************************************
+/* upload
+/*******************************************/
+.upload-wrapper{
+  height: 80vh;
+  width:100%;
+  float:left;
+  border:1px solid black;
+}
+footer{
+  clear:both;
+}
 
 
 

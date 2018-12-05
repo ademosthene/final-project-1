@@ -8,7 +8,8 @@ var port     = process.env.PORT || 8080;
 var mongoose = require('mongoose');
 var passport = require('passport');
 var flash    = require('connect-flash');
-
+var multer   = require('multer');
+var ObjectId = require('mongodb').ObjectID
 var morgan       = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
@@ -19,10 +20,10 @@ var configDB = require('./config/database.js');
 var db
 
 // configuration ===============================================================
-mongoose.connect(configDB.url, { useMongoClient: true }, (err, database) => {
+mongoose.connect(configDB.url, { useNewUrlParser: true }, (err, database) => {
   if (err) return console.log(err)
   db = database
-  require('./app/routes.js')(app, passport, db);
+  require('./app/routes.js')(app, passport, multer, db, ObjectId);
 }); // connect to our database
 
 
