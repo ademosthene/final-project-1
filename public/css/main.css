@@ -38,23 +38,24 @@
 /*******************************************/
 
 body {
-  background: silver;
+  background: aliceblue;
   font-family: 'Rajdhani', sans-serif;
 }
-.prodpage{
-  background: aliceblue;
-}
-.main{
-  background: white;
-}
 header{
-  height: 20vh;
+  height: 16vh;
   background: white;
   text-align: right;
   width: 100%;
 }
-.name{
-  font-size: 30px;
+footer{
+  clear:both;
+  height: 10vh;
+  background: white;
+  padding-top: 1%;
+  padding-left: .3%;
+}
+footer span{
+  font-size: 15px;
 }
 h1, span{
   text-align: center;
@@ -63,20 +64,16 @@ h1, span{
 span{
   font-size: 20px;
 }
-.prof{
-  height: 300px;
-  margin-left: 37%;
-  margin-bottom: 15px;
-  border-radius: 50%;
+h2{
+  margin-top: 1%;
 }
-.prod{
-  height: 400px;
-  margin-left: 7%;;
-  margin-bottom: 0;
-}
+/******************************************
+/* INDEX (HOME PAGE) STYLES
+/*******************************************/
+
 .container{
   height: 200vh;
-  background: black;
+  background: aliceblue;
   display: grid;
   grid-template-rows: 1.5fr 1fr 1fr;
   grid-row-gap: 1px;
@@ -89,13 +86,14 @@ span{
   grid-area: hero;
   background-color: white;
   background-image: url("../img/fist.jpg");
-  background-size: contain;
-  background-position: center;
+  background-size: 450px 430px;
+  background-position: center center;
   background-repeat: no-repeat;
   color: white;
   text-align: center;
 }
 .featured{
+  margin-top: 2%;
   grid-area: featured;
   background: aliceblue;
   display: grid;
@@ -105,23 +103,123 @@ span{
   grid-template-areas:
     "feat1 feat2 feat3"
 }
-h2{
-  text-align: center;
-}
 .release{
+  margin-bottom: 1%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 10px;
   justify-content: space-around;
   grid-template-areas:
     "real1 real2 real3"
+  grid-area: release;
+  background: white;
 }
 .feat, .real{
   margin-left: 15%;
   margin-top: 20px;
   height: 300px;
   width: 300px;
-  border: 2px solid green;
+}
+.feat img, .real img{
+  height: 300px;
+  width: 300px;
+}
+.feat-span{
+  grid-area: span;
+}
+.prod-img{
+  height: 300px;
+  width: 300px;
+}
+
+/******************************************
+/* PRODUCT PAGE (product.ejs)
+/*******************************************/
+
+.prodpage{
+  background: aliceblue;
+}
+.wrapper{
+  height: 100vh;
+  background: aliceblue;
+  width: 100%;
+}
+.product{
+  background: white;
+  height: 55vh;
+  width: 35%;
+  display: inline-block;
+  margin-left: 5%;
+  margin-top: 1%;
+  float: left;
+  margin-right: 2%;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  /* border: 1px solid black; */
+}
+.product span{
+  display: block;
+}
+.details{
+  background: aliceblue;
+  height: 55vh;
+  width: 45%;
+  display: inline-block;
+  float: left;
+  /* border: 1px solid black; */
+  margin-left: 7%;
+  padding-left: 2%;
+  padding-right: 2%;
+  font-size: 18px;
+}
+.related{
+  height: 45vh;
+  width: 100%;
+  float: left;
+  padding-left: 3%;
+}
+.related-products{
+  padding-right: 3%;
+  height: 1vh;
+  font-size: 18px;
+  text-align: center;
+}
+.prod1{
+  height: 35vh;
+  width: 20%;
+  margin: 2%;
+  float: left;
+  background: white;
+}
+
+/******************************************
+/* ARTIST PROFILE PAGE
+/*******************************************/
+
+.main{
+  background: white;
+  margin-top: 1%;
+}
+.name{
+  font-size: 30px;
+}
+.prof{
+  height: 300px;
+  margin-left: 37%;
+  margin-bottom: 15px;
+  border-radius: 50%;
+}
+img.prof{
+  margin-top: 1%;
+}
+.about{
+  border: 2px solid aliceblue;
+  background: aliceblue;
+  padding-top: 10px;
+}
+.galler{
+  margin-bottom: 1%;
 }
 .gal{
   display: inline-block;
@@ -130,80 +228,14 @@ h2{
   border: 2px solid green;
   margin-left: 5%;
 }
-.release{
-  grid-area: release;
-  background: white;
-}
-.about{
-  border: 2px solid aliceblue;
-  background: aliceblue;
-  padding-top: 10px;
-}
-.wrapper{
-  height: 480px;
-  background: aliceblue;
-  width: 100%;
-}
-.product{
-  background: white;
-  height: 450px;
-  width: 43%;
-  display: inline-block;
-  margin-left: 5%;
-  float: left;
-  margin-right: 2%;
-  text-align: center;
-  font-size: 20px;
-  font-weight: bold;
-}
-.prod1{
-  height: 130px;
-  width: 130px;
-  margin: 2%;
-  float: left;
-  border: 1px solid black;
-  background: white;
-}
-.details{
-  background: aliceblue;
-  height: 450px;
-  width: 45%;
-  display: inline-block;
-  float: left;
-}
-#prod{
-  margin: 240px 2% 0 2%;
-  background: white;
-}
-footer{
-  height: 10vh;
-  background: white;
-}
-#profileImg{
-  height: 200px;
-  width: 70%;
-  border-radius: 50%;
-  margin-left: 18%;
-}
-.gallery section{
-  display: none;
-  height: 100px;
-  width: 100px;
-  border: 1px solid black;
-}
-section.show {
-  display: block;
-  height: 100px;
-  width: 100px;
-  border: 1px solid black;
-}
+
 
 /******************************************
 /* LAYOUT
 /*******************************************/
 
 /******************************************
-/* profile
+/* USER PROFILE (profile.ejs)
 /*******************************************/
 .profile-information{
   width:100%;
@@ -216,6 +248,12 @@ section.show {
   float:left;
   height: 72vh;
   background: aliceblue;
+}
+#profileImg{
+  height: 200px;
+  width: 70%;
+  border-radius: 50%;
+  margin-left: 18%;
 }
 .pro-image{
   float:left;
@@ -254,7 +292,6 @@ margin-bottom: 2%;
 .upload{
   display: block;
 }
-
 .profile-username{
   width:46%;
   /* border:1px solid black; */
@@ -271,8 +308,9 @@ margin-bottom: 2%;
   border-top: 1px solid black;
   margin-right: 59%;
 }
+
 /******************************************
-/* upload
+/* PRODUCT UPLOAD PAGE
 /*******************************************/
 .upload-wrapper{
   height: 80vh;
@@ -280,10 +318,6 @@ margin-bottom: 2%;
   float:left;
   border:1px solid black;
 }
-footer{
-  clear:both;
-}
-
 
 
 /* MOBILE */

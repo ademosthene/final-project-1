@@ -12,15 +12,15 @@
 
       </section>
       <section class="featured">
-        <section class="feat feat1"></section>
-        <section class="feat feat2"></section>
+        <section class="feat feat1"><a href="/artist?id=<%= users[0]._id %>"><img src="<%= users[0].img %>" alt=""> </a></section>
+        <section class="feat feat2"><a href="/artist?id=<%= users[1]._id %>"><img src="<%= users[1].img %>" alt=""> </a></section>
         <section class="feat feat3"></section>
-        <a href=/artist> <h2>Featured Artists</h2></a>
+        <section class="feat-span"><a href=/artist> <h2>Featured Artists</h2></a></section>
       </section>
       <section class="release">
-        <section class="real real1"></section>
-        <section class="real real2"></section>
-        <section class="real real3"></section>
+        <section class="real real1"><a href="/product?id=<%= products[1]._id %>"><img class="prod-img" src="<%= products[products.length-3].img %>" alt=""> </a></section>
+        <section class="real real2"><a href="/product?id=<%= products[products.length-2]._id %>"><img class="prod-img" src="<%= products[products.length-2].img %>" alt=""> </a></section>
+        <section class="real real3"><a href="/product?id=<%= products[products.length-1]._id %>"><img class="prod-img" src="<%= products[products.length-1].img %>" alt=""> </a></section>
         <a href=/product><h2>New Releases</h2></a>
       </section>
     </section>

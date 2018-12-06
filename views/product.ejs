@@ -1,30 +1,31 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-    <link rel="stylesheet" href="css/main.css">
-    <link href="https://fonts.googleapis.com/css?family=Rajdhani" rel="stylesheet">
-  </head>
+<head>
+  <%include ./partials/head%>
+</head>
+
   <body class="prodpage">
+    <%include ./partials/header%>
     <section class="wrapper">
       <section class="product">
-        <img class="prod" src="../img/sample.png" alt="">
-        <p>Product Name</p>
-        <section class="prod1"></section>
-        <section class="prod1"></section>
-        <section class="prod1"></section>
+        <img class="prod-img" src="<%= product.img %>" alt="">
+        <span><%= product.name %></span>
       </section>
       <section class="details">
-        <h2>Product Name</h2>
-        <p><strong>Price:</strong></p>
+        <h2><%= product.name %></h2>
+        <span><strong>By: <%= product.name %></strong></span>
         <p><strong>Details:</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <section id="prod" class="prod1"></section>
-        <section id="prod" class="prod1"></section>
-        <section id="prod" class="prod1"></section>
+        <p><strong>Price:</strong></p>
+      </section>
+      <section class="related">
+        <section class="related-products">Related Products</section>
+        <section class="prod1"></section>
+        <section class="prod1"></section>
+        <section class="prod1"></section>
+        <section class="prod1"></section>
       </section>
     </section>
-
+    <%include ./partials/footer%>
   <script type="text/javascript" src="js/main.js"></script>
   </body>
 </html>

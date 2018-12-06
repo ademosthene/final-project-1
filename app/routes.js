@@ -1,37 +1,58 @@
 var Product       		= require('../app/models/product');
 module.exports = function(app, passport, multer, db, ObjectId) {
-  app.get('/', function(req, res) {
-    res.render('index.ejs');
-  });
+// ====== MAIN ROUTES ========================================================
 
+  // -- home page ----
+  app.get('/', function(req, res) {
+    var userCollection = db.collection('users');
+    var productCollection = db.collection('products');
+    productCollection.find().toArray((err, result) => {
+          if (err) return console.log(err)
+          userCollection.find().toArray((userErr, users) => {
+            if (userErr) return console.log(userErr)
+            res.render('index.ejs', {
+              user : req.user,
+              products: result,
+              users: users
+            })
+          })
+        })
+  });
+  // -- individual artist profile page -----
   app.get('/artist', function(req, res) {
     res.render('artistProfile.ejs');
   });
-
+  // -- all artists -------------------------
+  app.get('/artistCollection', function(req, res) {
+    res.render('allArtists.ejs');
+  });
+  // -- all products ------------------------
+  app.get('/productCollection', function(req, res) {
+    res.render('allProducts.ejs');
+  });
+  // -- individual product page -------------
   app.get('/product', function(req, res) {
-    res.render('product.ejs');
+    var productCollection = db.collection('products');
+    // using the right query parameter for find one function and console log.
+    // find right property value pair
+    productCollection.findOne({ _id: ObjectId(req.query.id)}, (err, product) => {
+      if (err) return console.log(err)
+      res.render('product.ejs', {
+        product: product
+      });
+    })
+
   });
 
-// SIGNUP ===============================================================
-// show the signup form
-  app.get('/signup', function(req, res) {
-      res.render('signup.ejs', { message: req.flash('signupMessage') });
-  });
-
-  // process the signup form
-  app.post('/signup', passport.authenticate('local-signup', {
-      successRedirect : '/profile', // redirect to the secure profile section
-      failureRedirect : '/signup', // redirect back to the signup page if there is an error
-      failureFlash : true // allow flash messages
-  }));
-
-// PROFILE SECTION ======================================================
+// ====== USER PROFILE SECTION =================================================
+  // -- display logged in user profile -------------
   app.get('/profile', isLoggedIn, function(req, res) {
     db.collection('users').findOne(req.user, (err, user) => {
       if (err) return console.log(err);
       res.render('profile.ejs', {user: req.user});
     });
   });
+  // -- update logged in user profile --------------
   app.post('/profile', (req, res) => {
       db.collection('users').findOneAndUpdate(req.user, {
         $set: {
@@ -50,23 +71,8 @@ module.exports = function(app, passport, multer, db, ObjectId) {
         res.redirect('/profile')
       })
     })
-
-// LOGIN =================================================================
-// show the login form
-  app.get('/login', function(req, res) {
-      res.render('login.ejs', { message: req.flash('loginMessage') });
-  });
-
-  // process the login form
-  app.post('/login', passport.authenticate('local-login', {
-      successRedirect : '/profile', // redirect to the secure profile section
-      failureRedirect : '/login', // redirect back to the signup page if there is an error
-      failureFlash : true // allow flash messages
-  }));
-
-  //---------------------------------------
-  // PROFILE IMAGE CODE
-  //---------------------------------------
+  // -- UPLOAD USER PROFILE IMAGE CODE ----------------------------------------
+  // -- stores image file on local device/file path -----
   var storage = multer.diskStorage({
       destination: (req, file, cb) => {
         cb(null, 'public/img/uploads')
@@ -76,16 +82,12 @@ module.exports = function(app, passport, multer, db, ObjectId) {
       }
   });
   var upload = multer({storage: storage});
-
   app.post('/up', upload.single('file-to-upload'), (req, res, next) => {
-
       insertDocuments(db, req, 'img/uploads/' + req.file.filename, () => {
-          //db.close();
-          //res.json({'message': 'File uploaded successfully'});
           res.redirect('/profile')
       });
   });
-
+  // -- stores file path in database ---------------------
   var insertDocuments = function(db, req, filePath, callback) {
       var collection = db.collection('users');
       var uId = ObjectId(req.session.passport.user)
@@ -100,23 +102,15 @@ module.exports = function(app, passport, multer, db, ObjectId) {
         if (err) return res.send(err)
         callback(result)
       })
-      // collection.findOne({"_id": uId}, (err, result) => {
-      //     //{'imagePath' : filePath }
-      //     //assert.equal(err, null);
-      //     callback(result);
-      // });
   }
-  //---------------------------------------
-  // PROFILE IMAGE CODE END
-  //---------------------------------------
 
+// ====== PRODUCT UPLOAD SECTION ===============================================
+  // -- display product upload page ------------
   app.get('/productUpload', function(req, res) {
     res.render('productUpload.ejs');
   });
 
-  //---------------------------------------
-  // PRODUCT IMAGE CODE
-  //---------------------------------------
+  // -- UPLOAD PRODUCT IMAGE CODE ----------------------------------------
   var storage = multer.diskStorage({
       destination: (req, file, cb) => {
         cb(null, 'public/img/productUploads')
@@ -126,9 +120,10 @@ module.exports = function(app, passport, multer, db, ObjectId) {
       }
   });
   var upload2 = multer({storage: storage});
-
   app.post('/up2', upload2.single('file-to-upload'), (req, res, next) => {
-      var collection = db.collection('users');
+      var userCollection = db.collection('users');
+      var productCollection = db.collection('products');
+  // -- creates a new product object ------------------
       var newProduct = new Product({
         name: req.body.name,
         description: req.body.description,
@@ -136,9 +131,15 @@ module.exports = function(app, passport, multer, db, ObjectId) {
         img: 'img/productUploads/' + req.file.filename,
         artist: req.user._id
       });
-      collection.findOneAndUpdate({"_id": req.user._id}, {
+  // -- saves new product into the database -----------
+      newProduct.save(function(err) {
+          if (err)
+              throw err;
+      });
+  // -- adds new product into artist product gallery --
+      userCollection.findOneAndUpdate({"_id": req.user._id}, {
         $push: {
-          gallery: newProduct
+          gallery: newProduct.id
         }
       }, {
         sort: {_id: -1},
@@ -149,20 +150,36 @@ module.exports = function(app, passport, multer, db, ObjectId) {
       })
 
   });
-  //---------------------------------------
-  // PRODUCT IMAGE CODE END
-  //---------------------------------------
 
+// ====== SIGNUP ===============================================================
+  // -- show the signup form --------------
+  app.get('/signup', function(req, res) {
+      res.render('signup.ejs', { message: req.flash('signupMessage') });
+  });
+  // -- process the signup form -----------
+  app.post('/signup', passport.authenticate('local-signup', {
+      successRedirect : '/profile', // redirect to the secure profile section
+      failureRedirect : '/signup', // redirect back to the signup page if there is an error
+      failureFlash : true // allow flash messages
+  }));
 
+// ===== LOGIN =================================================================
+  // -- show the login form ---------------
+  app.get('/login', function(req, res) {
+      res.render('login.ejs', { message: req.flash('loginMessage') });
+  });
+  // -- process the login form ------------
+  app.post('/login', passport.authenticate('local-login', {
+      successRedirect : '/profile', // redirect to the secure profile section
+      failureRedirect : '/login', // redirect back to the signup page if there is an error
+      failureFlash : true // allow flash messages
+  }));
 
 };
-
-
-// route middleware to ensure user is logged in ==============================
+// == route middleware to ensure user is logged in =============================
 function isLoggedIn(req, res, next) {
     console.log("yes");
     if (req.isAuthenticated())
         return next();
         else{res.redirect('/');}
-
 }
