@@ -318,8 +318,35 @@ margin-bottom: 2%;
   float:left;
   border:1px solid black;
 }
+/******************************************
+/* ARTIST COLLECTION PAGE STYLES
+/*******************************************/
+.collection-title{
+  margin-top: 5px;
+}
+.artist-grid, .product-grid{
+  padding-left: 9%;
+  margin-bottom: 15px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-gap: 15px;
+  grid-template-areas:
+    " img1 img2 img3"
+    " img4 img5 img6"
+    " img7 img8 img9"
+}
+.artist-page-link{
+  background: red;
+  border: 1px solid black;
+  height: 30vh;
+  width: 70%;
+}
 
-
+.artist-page-link img, .product-page-link img, .gal img{
+  height: 300px;
+  width: 300px;
+}
 /* MOBILE */
 @media only screen and (max-width: 768px){
 

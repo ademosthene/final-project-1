@@ -8,7 +8,12 @@
       <%include ./partials/header%>
     </header>
     <section class="artist-container">
-
+      <h1 class="collection-title">* Artist Collection *</h1>
+      <section class="artist-grid">
+      <% for (let i = 0; i < artists.length; i++){ %>
+          <section class="artist-page-link img<%= i+1 %>"><a href="/artist?id=<%= artists[i]._id %>"><img src="<%= artists[i].img %>"></img></a></section>
+      <% } %>
+      </section>
     </section>
     <footer> <%include ./partials/footer%></footer>
 

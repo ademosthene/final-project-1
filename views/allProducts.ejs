@@ -8,8 +8,14 @@
       <%include ./partials/header%>
     </header>
     <section class="product-container">
-
+      <h1 class="collection-title">* Art Collection *</h1>
+      <section class="product-grid">
+      <% for (let i = 0; i < products.length; i++){ %>
+          <section class="product-page-link img<%= i+1 %>"><a href="/product?id=<%= products[i]._id %>"><img src="<%= products[i].img %>"></img></a></section>
+      <% } %>
+      </section>
     </section>
+
     <footer> <%include ./partials/footer%></footer>
 
   <script type="text/javascript" src="js/main.js"></script>
