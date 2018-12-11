@@ -42,7 +42,7 @@ body {
   font-family: 'Rajdhani', sans-serif;
 }
 header{
-  height: 16vh;
+  height: 17vh;
   background: white;
   text-align: right;
   width: 100%;
@@ -85,31 +85,35 @@ h2{
 .hero{
   grid-area: hero;
   background-color: white;
-  background-image: url("../img/fist.jpg");
-  background-size: 450px 430px;
+  background-image: url("../img/m2.jpg");
+  background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
   color: white;
   text-align: center;
 }
 .featured{
-  margin-top: 2%;
+  margin-top: 10px;
   grid-area: featured;
   background: aliceblue;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 10px;
+  grid-template-rows: .01fr 1fr;
+  grid-gap: 5px;
   justify-content: space-around;
   grid-template-areas:
+    "feat-span feat-span feat-span"
     "feat1 feat2 feat3"
 }
 .release{
   margin-bottom: 1%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 10px;
+  grid-template-rows: .01fr 1fr;
+  grid-gap: 5px;
   justify-content: space-around;
   grid-template-areas:
+    "real-span real-span real-span"
     "real1 real2 real3"
   grid-area: release;
   background: white;
@@ -125,7 +129,12 @@ h2{
   width: 300px;
 }
 .feat-span{
-  grid-area: span;
+  grid-area: feat-span;
+  text-align: center;
+}
+.real-span{
+  grid-area: real-span;
+  text-align: center;
 }
 .prod-img{
   height: 300px;
