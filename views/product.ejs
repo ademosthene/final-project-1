@@ -4,28 +4,51 @@
   <%include ./partials/head%>
 </head>
 
-  <body class="prodpage">
-    <%include ./partials/header%>
-    <section class="wrapper">
-      <section class="product">
-        <img class="prod-img" src="<%= product.img %>" alt="">
-        <span><%= product.name %></span>
-      </section>
-      <section class="details">
-        <h2><%= product.name %></h2>
-        <span><strong>By: <a href="/artist?id=<%=artist._id %>"><%= artist.name %></a></strong></span>
-        <p><strong>Details:</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <p><strong>Price:</strong></p>
-      </section>
-      <section class="related">
-        <section class="related-products">Related Products</section>
-        <section class="prod1"></section>
-        <section class="prod1"></section>
-        <section class="prod1"></section>
-        <section class="prod1"></section>
-      </section>
+<body class="prodpage">
+  <%include ./partials/header%>
+  <% if (message.length > 0) { %>
+      <div class="alert alert-danger"><%= message %></div>
+  <% } %>
+  <section class="wrapper">
+    <section class="product">
+      <img class="prod-img" src="<%= product.img %>" alt="">
+      <span><%= product.name %></span>
     </section>
-    <%include ./partials/footer%>
+    <section class="details">
+      <h2><%= product.name %></h2>
+      <span><strong>By: <a href="/artist?id=<%=artist._id %>"><%= artist.name %></a></strong></span>
+      <p><strong>Details:</strong> <%= product.description %></p>
+      <p><strong>Price: </strong><%= product.price %></p>
+
+      <form action="/stripePostTest" method="POST">
+        <input type="hidden" name="productId" value="<%= product._id %>">
+        <script
+        src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+        data-key="<%= publishableKey %>"
+        data-amount="<%= product.price*100 %>"
+        data-name="Demo Site"
+        data-description="<%= product.id %>"
+        data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+        data-locale="auto">
+        </script>
+      </form>
+
+    </section>
+    <section class="related">
+      <section class="related-products">Related Products</section>
+      <section class="prod1"></section>
+      <section class="prod1"></section>
+      <section class="prod1"></section>
+      <section class="prod1"></section>
+    </section>
+  </section>
+  <%include ./partials/footer%>
   <script type="text/javascript" src="js/main.js"></script>
-  </body>
+    <% if (disable) { %>
+      <script type="text/javascript">
+      document.getElementsByClassName("stripe-button-el")[0].disabled=true;
+      </script>
+
+        <% } %>
+</body>
 </html>

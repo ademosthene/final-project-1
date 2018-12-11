@@ -1,4 +1,9 @@
+
+const publishableKey = 'pk_test_UKiQF66pjARQSqaN6rW6swkp';
+const secretKey = 'sk_test_S38cwG4yWaI1OBYgyRrrOJ0U';
 var Product       		= require('../app/models/product');
+var stripe = require("stripe")(secretKey);
+
 module.exports = function(app, passport, multer, db, ObjectId) {
   // ====== MAIN ROUTES ========================================================
 
@@ -65,7 +70,10 @@ module.exports = function(app, passport, multer, db, ObjectId) {
         if (err) return console.log(err)
         res.render('product.ejs', {
           product: product,
-          artist: artist
+          artist: artist,
+          publishableKey: publishableKey,
+          message: req.flash('loginMessage'),
+          disable: req.query.disable
         });
       })
     })
@@ -131,7 +139,7 @@ module.exports = function(app, passport, multer, db, ObjectId) {
     })
   }
 
-  // ====== PRODUCT UPLOAD SECTION ===============================================
+// ====== PRODUCT UPLOAD SECTION ===============================================
   // -- display product upload page ------------
   app.get('/productUpload', function(req, res) {
     res.render('productUpload.ejs');
@@ -178,7 +186,7 @@ module.exports = function(app, passport, multer, db, ObjectId) {
 
   });
 
-  // ====== SIGNUP ===============================================================
+// ====== SIGNUP ===============================================================
   // -- show the signup form --------------
   app.get('/signup', function(req, res) {
     res.render('signup.ejs', { message: req.flash('signupMessage') });
@@ -190,7 +198,7 @@ module.exports = function(app, passport, multer, db, ObjectId) {
     failureFlash : true // allow flash messages
   }));
 
-  // ===== LOGIN =================================================================
+// ===== LOGIN =================================================================
   // -- show the login form ---------------
   app.get('/login', function(req, res) {
     res.render('login.ejs', { message: req.flash('loginMessage') });
@@ -202,7 +210,47 @@ module.exports = function(app, passport, multer, db, ObjectId) {
     failureFlash : true // allow flash messages
   }));
 
+// ============= STRIPE PAYMENT ================================================
+
+
+/**
+ * GET /api/stripe
+ * Stripe API example.
+ */
+app.get('/stripeTest', (req, res) => {
+  res.render('api/stripe', {
+    title: 'Stripe API',
+    publishableKey: publishableKey,
+    message: req.flash('loginMessage')
+  });
+});
+
+/**
+ * POST /api/stripe
+ * Make a payment.
+ */
+app.post('/stripePostTest', (req, res) => {
+  console.log('********This is the header: ***********',req.headers,'*************This is the body: ***************', req.body);
+  const { stripeToken, stripeEmail } = req.body;
+  stripe.charges.create({
+    amount: 395,
+    currency: 'usd',
+    source: stripeToken,
+    description: stripeEmail
+  }, (err, charge) => {
+    console.log("****This is the charge: ****", charge);
+    if (err && err.type === 'StripeCardError') {
+      req.flash('errors', { msg: 'Your card has been declined.' });
+      return res.redirect('/api/stripe');
+    }
+    req.flash('success', { msg: 'Your card has been successfully charged.' });
+    res.redirect('/product?id=' + req.body.productId + '&disable=true');
+  });
+});
+
 };
+
+
 // == route middleware to ensure user is logged in =============================
 function isLoggedIn(req, res, next) {
   console.log("yes");

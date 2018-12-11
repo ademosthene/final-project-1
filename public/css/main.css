@@ -49,10 +49,10 @@ header{
 }
 footer{
   clear:both;
-  height: 10vh;
+  height: 6vh;
   background: white;
-  padding-top: 1%;
-  padding-left: .3%;
+  padding-top: 10px;
+  /* border-top: 1px solid black; */
 }
 footer span{
   font-size: 15px;
@@ -72,7 +72,7 @@ h2{
 /*******************************************/
 
 .container{
-  height: 200vh;
+  height: 190vh;
   background: aliceblue;
   display: grid;
   grid-template-rows: 1.5fr 1fr 1fr;
@@ -90,39 +90,49 @@ h2{
   background-position: center center;
   background-repeat: no-repeat;
   color: white;
+  height: 80vh;
   text-align: center;
 }
 .featured{
-  margin-top: 10px;
+  margin-top: 5px;
+  padding-left: 2.5%;
   grid-area: featured;
   background: aliceblue;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: .01fr 1fr;
-  grid-gap: 5px;
+  grid-gap: 1px;
+  height: 50vh;
   justify-content: space-around;
   grid-template-areas:
     "feat-span feat-span feat-span"
     "feat1 feat2 feat3"
 }
 .release{
-  margin-bottom: 1%;
-  display: grid;
+  /* display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: .01fr 1fr;
-  grid-gap: 5px;
+  grid-gap: 5px; */
+  height: 50vh;
   justify-content: space-around;
-  grid-template-areas:
+  /* grid-template-areas:
     "real-span real-span real-span"
-    "real1 real2 real3"
+    "real1 real2 real3" */
   grid-area: release;
-  background: white;
+  /* background: red; */
 }
-.feat, .real{
-  margin-left: 15%;
-  margin-top: 20px;
+.feat{
+  margin-left: 4%;
+  margin-top: 10px;
   height: 300px;
   width: 300px;
+}
+.real{
+  float: left;
+  height: 300px;
+  width: 300px;
+  margin-left: 5%;
+  margin-top: 20px;
 }
 .feat img, .real img{
   height: 300px;
@@ -154,7 +164,7 @@ h2{
   width: 100%;
 }
 .product{
-  background: white;
+  /* background: white; */
   height: 55vh;
   width: 35%;
   display: inline-block;
@@ -218,6 +228,7 @@ h2{
   margin-left: 37%;
   margin-bottom: 15px;
   border-radius: 50%;
+  width: 27%;
 }
 img.prof{
   margin-top: 1%;
@@ -229,12 +240,13 @@ img.prof{
 }
 .galler{
   margin-bottom: 1%;
+  background: white;
 }
 .gal{
   display: inline-block;
   height: 300px;
   width: 300px;
-  border: 2px solid green;
+  /* border: 2px solid green; */
   margin-left: 5%;
 }
 
@@ -260,7 +272,7 @@ img.prof{
 }
 #profileImg{
   height: 200px;
-  width: 70%;
+  width: 50%;
   border-radius: 50%;
   margin-left: 18%;
 }

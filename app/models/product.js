@@ -10,7 +10,7 @@ var productSchema = mongoose.Schema({
     tags : [String],
     medium : String,
     type : String,
-    price : Number,
+    price : String,
     artist : { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
 });
 
