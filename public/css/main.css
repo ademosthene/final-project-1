@@ -7,6 +7,8 @@
      -moz-box-sizing: border-box; /* Firexfox */
      -webkit-box-sizing: border-box; /* Safari/Chrome/iOS/Android */
      box-sizing: border-box; /* IE */
+     padding:0;
+     margin:0;
 }
 
 /* Clear fix hack */
@@ -42,16 +44,16 @@ body {
   font-family: 'Rajdhani', sans-serif;
 }
 header{
-  height: 17vh;
   background: white;
   text-align: right;
   width: 100%;
+  padding:6px 0;
 }
 footer{
   clear:both;
-  height: 6vh;
   background: white;
-  padding-top: 10px;
+  margin-top: 10px;
+  padding:12px;
   /* border-top: 1px solid black; */
 }
 footer span{
@@ -60,12 +62,15 @@ footer span{
 h1, span{
   text-align: center;
   margin-top: 0;
+  letter-spacing: .1em;
 }
 span{
   font-size: 20px;
 }
 h2{
-  margin-top: 1%;
+  margin: 18px 0;
+  text-align: center;
+  font-size: 1.2em;
 }
 /******************************************
 /* INDEX (HOME PAGE) STYLES
@@ -102,7 +107,7 @@ h2{
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: .01fr 1fr;
   grid-gap: 1px;
-  height: 50vh;
+
   justify-content: space-around;
   grid-template-areas:
     "feat-span feat-span feat-span"
@@ -113,7 +118,7 @@ h2{
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: .01fr 1fr;
   grid-gap: 5px; */
-  height: 50vh;
+  
   justify-content: space-around;
   /* grid-template-areas:
     "real-span real-span real-span"
@@ -343,11 +348,9 @@ margin-bottom: 2%;
 /* ARTIST COLLECTION PAGE STYLES
 /*******************************************/
 .collection-title{
-  margin-top: 5px;
+  margin: 18px 0;
 }
 .artist-grid, .product-grid{
-  padding-left: 9%;
-  margin-bottom: 15px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
@@ -357,16 +360,32 @@ margin-bottom: 2%;
     " img4 img5 img6"
     " img7 img8 img9"
 }
-.artist-page-link{
-  background: red;
-  border: 1px solid black;
-  height: 30vh;
-  width: 70%;
+
+
+.product-container,
+.artist-container,
+.featured,
+.release {
+  max-width: 1024px;
+  margin: 0 auto;
 }
 
 .artist-page-link img, .product-page-link img, .gal img{
-  height: 300px;
+/*  height: 300px;
   width: 300px;
+  */
+  width:100%;
+  height:auto;
+}
+.product-page-link,
+.artist-page-link,
+.feat,
+.real
+ {
+  border: 8px solid white;
+  box-shadow: 2px 2px 10px #adadad;
+  height:300px;
+  overflow:hidden;
 }
 /* MOBILE */
 @media only screen and (max-width: 768px){
