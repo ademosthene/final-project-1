@@ -118,7 +118,7 @@ h2{
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: .01fr 1fr;
   grid-gap: 5px; */
-  
+
   justify-content: space-around;
   /* grid-template-areas:
     "real-span real-span real-span"
@@ -126,19 +126,19 @@ h2{
   grid-area: release;
   /* background: red; */
 }
-.feat{
-  margin-left: 4%;
+.feat, .real{
+  margin-left: 13%;
   margin-top: 10px;
-  height: 300px;
-  width: 300px;
+  /* height: 300px; */
+  /* width: 300px; */
 }
-.real{
+/* .real{
   float: left;
   height: 300px;
-  width: 300px;
-  margin-left: 5%;
+  width: 30%;
+  margin-left: 1%;
   margin-top: 20px;
-}
+} */
 .feat img, .real img{
   height: 300px;
   width: 300px;
@@ -375,7 +375,7 @@ margin-bottom: 2%;
   width: 300px;
   */
   width:100%;
-  height:auto;
+  height:100%;
 }
 .product-page-link,
 .artist-page-link,
