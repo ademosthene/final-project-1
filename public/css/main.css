@@ -45,42 +45,55 @@ body {
 }
 header{
   background: white;
-  text-align: right;
   width: 100%;
   padding:6px 0;
 }
+.main-header{
+  display: flex;
+}
+.header-left, .header-right{
+  width: 50%;
+  float: left;
+  padding-left: 1%;
+}
+.header-left{
+  padding-left: 2%;
+}
+nav{
+  padding-top: 20px;
+}
+nav a{
+  text-decoration: none;
+  color: black;
+  padding: 10px;
+  border: 1px solid black;
+  margin: 1%;
+}
 footer{
-  clear:both;
   background: white;
-  margin-top: 10px;
+  margin-top: 40px;
   padding:12px;
   /* border-top: 1px solid black; */
 }
 footer span{
   font-size: 15px;
 }
-h1, span{
-  text-align: center;
-  margin-top: 0;
-  letter-spacing: .1em;
+.header-left h1{
+  font-size: 2em;
+  letter-spacing: 2px;
 }
-span{
-  font-size: 20px;
-}
-h2{
-  margin: 18px 0;
-  text-align: center;
+.header-left h2{
   font-size: 1.2em;
+  letter-spacing: 2px;
 }
 /******************************************
 /* INDEX (HOME PAGE) STYLES
 /*******************************************/
 
 .container{
-  height: 190vh;
   background: aliceblue;
   display: grid;
-  grid-template-rows: 1.5fr 1fr 1fr;
+  grid-template-rows: 1fr .5fr .5fr;
   grid-row-gap: 1px;
   grid-template-areas:
     "hero"
@@ -100,7 +113,6 @@ h2{
 }
 .featured{
   margin-top: 5px;
-  padding-left: 2.5%;
   grid-area: featured;
   background: aliceblue;
   display: grid;
@@ -114,31 +126,22 @@ h2{
     "feat1 feat2 feat3"
 }
 .release{
-  /* display: grid;
+  margin-top: 5px;
+  grid-area: release;
+  background: aliceblue;
+  display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: .01fr 1fr;
-  grid-gap: 5px; */
+  grid-template-rows: .01fr .5fr;
+  grid-gap: 1px;
 
   justify-content: space-around;
-  /* grid-template-areas:
+  grid-template-areas:
     "real-span real-span real-span"
-    "real1 real2 real3" */
-  grid-area: release;
-  /* background: red; */
+    "real1 real2 real3"
 }
 .feat, .real{
-  margin-left: 13%;
-  margin-top: 10px;
-  /* height: 300px; */
-  /* width: 300px; */
+  margin: 0 4%;
 }
-/* .real{
-  float: left;
-  height: 300px;
-  width: 30%;
-  margin-left: 1%;
-  margin-top: 20px;
-} */
 .feat img, .real img{
   height: 300px;
   width: 300px;
@@ -146,10 +149,22 @@ h2{
 .feat-span{
   grid-area: feat-span;
   text-align: center;
+  padding-top: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.feat-span a, .real-span a{
+  text-decoration: none;
+  font-size: 1.7em;
+  color: black;
+  letter-spacing: 1px;
 }
 .real-span{
   grid-area: real-span;
   text-align: center;
+  margin-top: 20px;
+  padding-top: 5px;
+  margin-bottom: 15px;
 }
 .prod-img{
   height: 300px;
@@ -349,12 +364,14 @@ margin-bottom: 2%;
 /*******************************************/
 .collection-title{
   margin: 18px 0;
+  text-align: center;
+  font-weight: lighter;
 }
 .artist-grid, .product-grid{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
-  grid-gap: 15px;
+  grid-gap: 40px;
   grid-template-areas:
     " img1 img2 img3"
     " img4 img5 img6"
