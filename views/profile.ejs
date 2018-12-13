@@ -4,7 +4,7 @@
     <%include ./partials/head%>
   </head>
   <body>
-    <%include ./partials/header%>
+    <%include ./partials/profileHeader%>
 
     <section class ="profile-information">
       <section class="profile-picture">
@@ -19,28 +19,21 @@
         </section>
         <section class="bio-info">
           <form action="/profile" method="POST">
-            <section class="first-bio">
-              <label class="bio-info-label1" for="">Name: </label>
-              <input class="bio-info-input1"type="text" name="name" value="<%= user.name %>">
-            </section>
-            <br>
-            <label for="">UserName: </label>
-            <input class="user-label" type="text" name="username" value="<%= user.username %>">
-            <br>
-            <label  for="">Location: </label>
-            <input type="text" name="location" value="<%= user.location %>">
-            <br>
+            <input class="bio-info-input" type="text" name="name" value="<%= user.name %>" placeholder="Name">
+            <input class="bio-info-input" type="text" name="location" value="<%= user.location %>" placeholder="Location">
             <section class="bio-section">
-                <label class= "bio-info-label2" for="">Bio: </label>
-                <input class= "bio-info-input2" "type="text" name="bio" value="<%= user.bio %>">
-                <input type="submit" name="" value="SUBMIT">
-              </form>
+                <input class="bio-info-input2" placeholder="Bio" "type="text" name="bio" value="<%= user.bio %>">
+                <input class="btn" id="bio-btn" type="submit" name="" value="SUBMIT">
             </section>
+          </form>
         </section>
       </section>
       <section class="profile-username">
         <section class="shop-and-upload">
-          <h1><a href="/productUpload">Upload Your Art</a></h1>
+          <h1><a class="upload-art-btn" href="/productUpload">Upload Your Art</a></h1>
+        </section>
+        <section class="shop-and-upload2">
+          <h1><a class="upload-art-btn" href="/artist?id=<%= user._id %>">View Profile</a></h1>
         </section>
       </section>
       </section>
