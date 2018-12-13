@@ -6,7 +6,7 @@ An application to highlight Black artists in Boston.
 
 **Users:** Will be able to be notified of artists' new additions and make purchases.
 
-![alt tag](pic.jpg)
+![alt tag](finalpic.png)
 
 ## Usage:
 
