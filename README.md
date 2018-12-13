@@ -1,4 +1,6 @@
-## Black * Arts * Boston 🎨
+![alt tag](finalpic.png)
+
+## ##
 An application to highlight Black artists in Boston.
 
 ## How it Works:
@@ -6,9 +8,9 @@ An application to highlight Black artists in Boston.
 
 **Users:** Will be able to be notified of artists' new additions and make purchases.
 
-![alt tag](finalpic.png)
 
 ## Usage:
 
-1. run `npm run start`
-2. Navigate to `localhost:8080`
+1. run `npm install`
+2. run `npm run start`
+3. Navigate to `localhost:8080`
